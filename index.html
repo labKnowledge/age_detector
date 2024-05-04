@@ -20,7 +20,7 @@
             import gradio as gr
 
 
-            def genPrediction(im)
+            def genPrediction(im):
                 # Init model, transforms
                 model = ViTForImageClassification.from_pretrained('nateraw/vit-age-classifier')
                 transforms = ViTFeatureExtractor.from_pretrained('nateraw/vit-age-classifier')
@@ -37,7 +37,7 @@
             
             # pipe = await pipeline("image-classification", model="nateraw/vit-age-classifier")
             
-            app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs="text")
+            app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs=["text"])
             
             app.launch()
             
