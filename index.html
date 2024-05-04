@@ -15,7 +15,8 @@
           <h5 class="card-title">Question the Document</h5>
           <gradio-lite>
             from transformers_js_py import pipeline 
-            
+            import gradio as gr
+
             pipe = await pipeline('document-question-answering', 'Xenova/donut-base-finetuned-docvqa')
             
             app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs=["text"])
