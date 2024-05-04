@@ -37,7 +37,7 @@
             
             # pipe = await pipeline("image-classification", model="nateraw/vit-age-classifier")
             
-            app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs="image")
+            app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs="text")
             
             app.launch()
             
