@@ -19,7 +19,8 @@
 
             pipe = await pipeline('document-question-answering', 'Xenova/donut-base-finetuned-docvqa')
             
-            app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs=["text"])
+            
+            app = gr.Interface.from_pipeline(pipe)
             
             app.launch()
             
