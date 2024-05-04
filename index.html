@@ -7,21 +7,19 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gradio/lite/dist/lite.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Ask Question your document | </title>
+    <title>Ask Question about Image document | </title>
 </head>
 <body>
     <div class="card" >
         <div class="card-body">
-          <h5 class="card-title">Question the Document</h5>
+          <h5 class="card-title">Question the Image Document</h5>
           <gradio-lite>
             from transformers_js_py import pipeline 
             import gradio as gr
 
             pipe = await pipeline('document-question-answering', 'Xenova/donut-base-finetuned-docvqa')
             
-            
             app = gr.Interface.from_pipeline(pipe)
-            
             app.launch()
             
             <gradio-requirements>
