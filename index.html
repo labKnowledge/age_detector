@@ -14,19 +14,37 @@
         <div class="card-body">
           <h5 class="card-title">Age Detector</h5>
           <gradio-lite>
+            from PIL import Image
+            from io import BytesIO
+            from transformers import ViTFeatureExtractor, ViTForImageClassification
             import gradio as gr
-            from transformers_js_py import pipeline
+
+
+            def genPrediction(im)
+                # Init model, transforms
+                model = ViTForImageClassification.from_pretrained('nateraw/vit-age-classifier')
+                transforms = ViTFeatureExtractor.from_pretrained('nateraw/vit-age-classifier')
+
+                # Transform our image and pass it through the model
+                inputs = transforms(im, return_tensors='pt')
+                output = model(**inputs)
+
+                # Predicted Class probabilities
+                proba = output.logits.softmax(1)
+
+                # Predicted Classes
+                return proba.argmax(1)
             
-            pipe = await pipeline("image-classification", model="nateraw/vit-age-classifier")
+            #pipe = await pipeline("image-classification", model="nateraw/vit-age-classifier")
             
-            app = gr.Interface.from_pipeline(pipe)
+            app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs="image")
             
             app.launch()
             
-                        <gradio-requirements>
+            <gradio-requirements>
             transformers-js-py
-                        </gradio-requirements>
-                    </gradio-lite>
+            </gradio-requirements>
+        </gradio-lite>
         </div>
       </div>
 
