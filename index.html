@@ -35,7 +35,7 @@
                 # Predicted Classes
                 return proba.argmax(1)
             
-            #pipe = await pipeline("image-classification", model="nateraw/vit-age-classifier")
+            # pipe = await pipeline("image-classification", model="nateraw/vit-age-classifier")
             
             app = gr.Interface(fn=genPrediction, inputs=gr.Image(), outputs="image")
             
